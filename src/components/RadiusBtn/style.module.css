@@ -1,0 +1,8 @@
+.navBtn {
+  border: none;
+  background: var(--red-100);
+  color: #fff;
+  border-radius: 360px;
+  padding: 8px 2.1875rem;
+  font-weight: 500;
+}
