@@ -18,11 +18,11 @@
   margin-bottom: 1.5rem;
 }
 .form {
-  background: #a8324a;
-  border-radius: 1rem;
-  padding: 30px;
+  padding: 30px 20px;
 }
 .container {
+  border-radius: 1rem;
+  background: #a8324a;
   width: 100%;
   max-width: 1320px;
   padding: 0 20px;
@@ -43,9 +43,135 @@
 }
 
 .form label input {
+  outline: none;
   border: none;
   background: #fff;
-  color: #bbbbbd;
   border-radius: 0.625rem;
   padding: 1.1625rem 1.5625rem;
+}
+.form label input::placeholder {
+  color: rgb(200, 200, 200);
+}
+
+.formTextArea {
+  outline: none;
+  width: 100%;
+  border-radius: 0.625rem;
+  height: 6.8rem;
+  padding: 20px;
+}
+.formTextArea::placeholder {
+  color: rgb(200, 200, 200);
+}
+
+.form label .formTextArea:focus {
+  outline: 2px solid rgb(61, 100, 183);
+  outline-offset: 1px;
+}
+
+.form label input:focus {
+  outline: 2px solid rgb(61, 100, 183);
+  outline-offset: 1px;
+}
+.checkboxLabel {
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 20px;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.formText {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding-bottom: 30px;
+  display: flex;
+}
+
+.contain {
+  width: 100%;
+  max-width: 1300px;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+.link {
+  margin-left: 5%;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 20px;
+}
+.privacyLink {
+  display: block;
+  text-decoration: underline;
+  color: #fff;
+}
+.privacyLink:hover {
+  text-decoration: none;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+.freeBtn {
+  padding: 17px 32px;
+  background: #fec107;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.link {
+  padding-left: 35px;
+  padding-top: 20px;
+}
+
+.freeBtn:active a {
+  color: #000 !important;
+  outline: 3px solid #fec0074f !important;
+  outline-offset: 1px;
+}
+@media screen and (max-width: 991px) {
+  .formBox {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .formBox {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 30px;
+  }
+  .grow {
+    grid-column: span 2;
+  }
+  .container {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 430px) {
+  .formBox {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+  }
+  .grow {
+    grid-column: span 1;
+  }
+  .form {
+    padding: 30px 0;
+  }
+  .bookTitle {
+    font-size: 35px !important;
+  }
 }

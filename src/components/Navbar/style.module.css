@@ -30,14 +30,23 @@
 }
 
 .navItem {
-  padding: 10px 10px !important;
+  width: 100%;
+  padding-left: 20px;
+  color: #a3a3a3;
+  font-weight: 500 !important;
+  margin-top: 10px !important;
+  transition: all 0.4s ease;
 }
 .navTitleHover {
-  color: var(--black-10);
   transition: all 0.3s ease;
   border: 0 !important;
   font-size: 1.18rem !important;
-  font-weight: 600;
+  font-weight: 600 !important;
+}
+.accordion {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
 }
 .navTitleHover2 {
   color: var(--black-10);
@@ -51,7 +60,7 @@
 }
 
 .navItem:hover {
-  background: var(--red-10) !important;
+  color: var(--red-100);
 }
 
 .navItem:active {

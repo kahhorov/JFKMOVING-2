@@ -18,19 +18,16 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import CloseIcon from "@mui/icons-material/Close";
+import { Link } from "react-router-dom";
 export default () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -130,6 +127,12 @@ export default () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  // accordion
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
     <div style={{ zIndex: "1000" }}>
@@ -144,16 +147,31 @@ export default () => {
           <AppBar
             position="fixed"
             className={scrolled ? styles.scrolled : styles.show}
-            sx={{ background: "#fff" }}
+            sx={{
+              background: "#fff",
+              height: "80px",
+              display: "flex",
+              alignItems: "space-between",
+              justifyContent: "center",
+            }}
           >
             <Toolbar
               sx={{
-                justifyContent: "end",
+                justifyContent: "space-between",
                 gap: "20px",
               }}
             >
-              <Typography variant="h6" noWrap component="div">
-                Persistent drawer
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{
+                  display: "flex",
+                  color: "black",
+                  justifyContent: "start",
+                }}
+              >
+                <img src={site_logo} alt="" width={150} />
               </Typography>
               <IconButton
                 color="inherit"
@@ -205,149 +223,118 @@ export default () => {
             <List>
               <Box sx={{ padding: 2 }}>
                 <div className={styles.BarList}>
-                  <NavDropdown
-                    title={
-                      <span className={styles.navTitleHover2}>Company</span>
-                    }
-                    id="navbarScrollingDropdown"
+                  <Accordion
+                    expanded={expanded === "panel1"}
+                    onChange={handleChange("panel1")}
+                    className={styles.accordion}
                   >
-                    <NavDropdown.Item
-                      href="#action1"
-                      className={styles.navItem}
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1bh-content"
+                      id="panel1bh-header"
+                      className={styles.navTitleHover}
                     >
-                      About Us
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action2"
-                      className={styles.navItem}
-                    >
-                      Blog
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action3"
-                      className={styles.navItem}
-                    >
-                      Donations
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action4"
-                      className={styles.navItem}
-                    >
-                      License
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action5"
-                      className={styles.navItem}
-                    >
-                      Claims
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown
-                    title={
-                      <span className={styles.navTitleHover2}>Moving</span>
-                    }
-                    id="navbarScrollingDropdown"
+                      Company
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography className={styles.navItem}>
+                        About Us
+                      </Typography>
+                      <Typography className={styles.navItem}>Blog</Typography>
+                      <Typography className={styles.navItem}>
+                        Donations
+                      </Typography>
+                      <Typography className={styles.navItem}>
+                        License
+                      </Typography>
+                      <Typography className={styles.navItem}>Claims</Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel2"}
+                    onChange={handleChange("panel2")}
                   >
-                    <NavDropdown.Item
-                      href="#action1"
-                      className={styles.navItem}
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel2bh-content"
+                      id="panel2bh-header"
                     >
-                      Residential
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action2"
-                      className={styles.navItem}
-                    >
-                      Commercial
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action3"
-                      className={styles.navItem}
-                    >
-                      Local
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action4"
-                      className={styles.navItem}
-                    >
-                      Long Distance
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <NavDropdown
-                    title={
-                      <span className={styles.navTitleHover2}>Servis</span>
-                    }
-                    id="navbarScrollingDropdown"
+                      <Typography
+                        component="span"
+                        sx={{ width: "33%", flexShrink: 0 }}
+                      >
+                        Users
+                      </Typography>
+                      <Typography
+                        component="span"
+                        sx={{ color: "text.secondary" }}
+                      >
+                        You are currently not an owner
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Donec placerat, lectus sed mattis semper, neque lectus
+                        feugiat lectus, varius pulvinar diam eros in elit.
+                        Pellentesque convallis laoreet laoreet.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel3"}
+                    onChange={handleChange("panel3")}
                   >
-                    <NavDropdown.Item
-                      href="#action1"
-                      className={styles.navItem}
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel3bh-content"
+                      id="panel3bh-header"
                     >
-                      Packing and Unpacking
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action2"
-                      className={styles.navItem}
-                    >
-                      Piano and Pool Table Moving
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action3"
-                      className={styles.navItem}
-                    >
-                      Boxes and Supplies
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action4"
-                      className={styles.navItem}
-                    >
-                      Junk Removal
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <Nav.Link href="#action1">
-                    <span className={styles.navTitleHover2}>Shop</span>
-                  </Nav.Link>
-
-                  <NavDropdown
-                    title={
-                      <span className={styles.navTitleHover2}>Cities</span>
-                    }
-                    id="navbarScrollingDropdown"
+                      <Typography
+                        component="span"
+                        sx={{ width: "33%", flexShrink: 0 }}
+                      >
+                        Advanced settings
+                      </Typography>
+                      <Typography
+                        component="span"
+                        sx={{ color: "text.secondary" }}
+                      >
+                        Filtering has been entirely disabled for whole web
+                        server
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Nunc vitae orci ultricies, auctor nunc in, volutpat
+                        nisl. Integer sit amet egestas eros, vitae egestas
+                        augue. Duis vel est augue.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                  <Accordion
+                    expanded={expanded === "panel4"}
+                    onChange={handleChange("panel4")}
                   >
-                    <NavDropdown.Item
-                      href="#action1"
-                      className={styles.navItem}
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel4bh-content"
+                      id="panel4bh-header"
                     >
-                      Los Angeles County Movers
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action2"
-                      className={styles.navItem}
-                    >
-                      Orange Movers
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action3"
-                      className={styles.navItem}
-                    >
-                      Riverside Movers
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action4"
-                      className={styles.navItem}
-                    >
-                      San Diego Movers
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      href="#action5"
-                      className={styles.navItem}
-                    >
-                      San Bernardino Movers
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <Nav.Link href="#action1">
-                    <span className={styles.navTitleHover2}> Guide</span>
-                  </Nav.Link>
+                      <Typography
+                        component="span"
+                        sx={{ width: "33%", flexShrink: 0 }}
+                      >
+                        Personal data
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        Nunc vitae orci ultricies, auctor nunc in, volutpat
+                        nisl. Integer sit amet egestas eros, vitae egestas
+                        augue. Duis vel est augue.
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
                 </div>
               </Box>
             </List>
@@ -356,6 +343,7 @@ export default () => {
                 height: "100%",
                 alignItems: "end",
                 display: "flex",
+                paddingBottom: "30px",
               }}
             >
               <Box sx={{ padding: 2 }}>
