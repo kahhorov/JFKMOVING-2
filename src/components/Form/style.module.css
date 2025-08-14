@@ -133,11 +133,6 @@
   padding-left: 35px;
   padding-top: 20px;
 }
-.inpDate {
-  display: flex;
-  flex-grow: 1;
-  grid-column: span 2;
-}
 
 .freeBtn:active a {
   color: #000 !important;
@@ -178,5 +173,9 @@
   }
   .bookTitle {
     font-size: 35px !important;
+  }
+  .inpDate {
+    width: 100% !important;
+    grid-column: span 1;
   }
 }
