@@ -33,7 +33,7 @@ export default () => {
               </label>
               <label>
                 Move date
-                <input type="date" />
+                <input type="date" className={styles.inpDate} />
               </label>
               <label>
                 Pickup address

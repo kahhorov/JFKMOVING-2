@@ -133,6 +133,11 @@
   padding-left: 35px;
   padding-top: 20px;
 }
+.inpDate {
+  display: flex;
+  flex-grow: 1;
+  grid-column: span 2;
+}
 
 .freeBtn:active a {
   color: #000 !important;
