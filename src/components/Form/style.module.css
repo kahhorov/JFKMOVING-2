@@ -177,5 +177,6 @@
   .inpDate {
     width: 100% !important;
     grid-column: span 1;
+    border: 1px solid red !;
   }
 }
